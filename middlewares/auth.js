@@ -13,7 +13,6 @@ var Auth = {
             //req.flash('info', 'Maaf, Anda mengakses halaman terlarang')
             return res.redirect('/secretm')
         }
-
         next()
     },
     is_member: function (req, res, next)

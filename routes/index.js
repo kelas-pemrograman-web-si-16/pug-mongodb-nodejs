@@ -28,7 +28,7 @@ router.post('/login', function(req, res, next) {
         .update(req.body.password)
         .digest('hex')
     if (req.body.username == '' || req.body.password == '') {
-        req.flash('info', 'Maaf, ndak boleh ada field yang kosong')
+        req.flash('info', 'Maaf, tidak boleh ada field yang kosong')
         res.redirect('/login')
     }
     else {
@@ -42,7 +42,9 @@ router.post('/login', function(req, res, next) {
                 session_store.username = user[0].username
                 session_store.email = user[0].email
                 session_store.admin = user[0].admin
+                session_store.firstname = user[0].firstname
                 session_store.logged_in = true
+
                 if(user[0].admin == true){
                     res.redirect('/admin')
                 }else {
